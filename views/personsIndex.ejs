@@ -39,7 +39,7 @@ border-bottom: 2px solid #009879;
 </style>
 <body>
 <table class="styled-table">
-<tr>
+<tr> <!--Se crea la tabla y los encabezados donde se representaran los datos-->
 <th>NSS</th>
 <th>Nombre</th>
 <th>Edad</th>
@@ -47,14 +47,18 @@ border-bottom: 2px solid #009879;
 <th></th>
 </tr>
 
-
+<!-- Sirve para referenciar los objetos JSON-->
 <% Object.keys(persons).forEach(function(prop) { %>
 
-<tr>
+<tr> <!--Para referenciar nuestro objeto JSON, se define con el método Object.keys(nombre_del_objeto_JSON)-->
 <td><%- persons[prop].nss %></td>
 <td><%- persons[prop].nombre %></td>
 <td><%- persons[prop].edad %></td>
 <td><%- persons[prop].tipoSangre %></td>
+<td><a href="<%= `deletePerson/${persons[prop]._id}` %>">Delete</a></td>
+<td><a href="<%= `findById/${persons[prop]._id}` %>">Update</a></td>
+
+</tr>
 
 <% }); %>
 
@@ -62,6 +66,6 @@ border-bottom: 2px solid #009879;
 
 
 </table>
-<a href="./main">Back</a>
+<a href="./main.ejs">Back</a>
 </body>
 </html>
